@@ -23,4 +23,5 @@ jobs:
       - name: Make release
         uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
+      - run: npm i
       - run: npx semantic-release

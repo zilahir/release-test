@@ -13,13 +13,14 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - uses: bahmutov/npm-install@v1
       - run: npm i
   release:
      name: Semantic Release
      runs-on: "ubuntu-latest"
      steps:
-      - uses: actions/checkout@v2
+      - name: Make release
+        uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - run: npx semantic-release

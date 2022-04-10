@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cm": "cz",
+    "commit": "cz",
     "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "commitizen": "^4.2.4",
     "husky": "^7.0.0"
   }
 }

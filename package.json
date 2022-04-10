@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "commitizen": "^4.2.4",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "semantic-release": "^19.0.2"
   }
 }

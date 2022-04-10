@@ -1,0 +1,77 @@
+{
+	"repositoryUrl": "https://github.com/zilahir/release-test.git",
+	"branches": [
+		{
+			"name": "release",
+			"prerelease": false
+		},
+		{
+			"name": "daily",
+			"prerelease": true,
+			"channel": "master"
+		}
+	],
+	"plugins": [
+		[
+			"@semantic-release/commit-analyzer",
+			{
+				"preset": "conventionalcommits",
+				"parserOpts": {
+					"noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+				},
+				"writerOpts": {
+					"commitsSort": ["subject", "scope"]
+				}
+			}
+		],
+		[
+			"@semantic-release/release-notes-generator",
+			{
+				"linkCompare": false,
+				"changelogFile": "./CHANGELOG.md",
+				"preset": "conventionalcommits",
+				"config": "conventional-changelog-conventionalcommits",
+				"parserOpts": {
+					"noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+				},
+				"writerOpts": {
+					"commitsSort": ["subject", "scope"]
+				}
+			}
+		],
+		[
+			"@semantic-release/changelog",
+			{
+				"changelogFile": "./CHANGELOG.md"
+			}
+		],
+		[
+			"@semantic-release/npm",
+			{
+				"npmPublish": false
+			}
+		],
+		[
+			"@semantic-release/git",
+			{
+				"assets": ["package.json", "./CHANGELOG.md"],
+				"message": "🚀chore(release): ${nextRelease.version} [skip ci]"
+			}
+		],
+		[
+			"@saithodev/semantic-release-backmerge",
+			{
+				"branchName": "daily",
+				"allowSameBranchMerge": true,
+				"backmergeStrategy": "merge",
+				"clearWorkspace": true
+			}
+		],
+		[
+			"@semantic-release/exec",
+			{
+				"verifyReleaseCmd": "echo ${nextRelease.version} > .VERSION && git add .VERSION"
+			}
+		]
+	]
+}

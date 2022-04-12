@@ -1,3 +1,10 @@
+### 1.0.1 (2022-04-12)
+
+
+### Bug Fixes
+
+* **test:** tesing new version ([a366653](https://github.com/zilahir/release-test/commit/a366653f52c9e9ebcac1c5655fe11d3ff6f38257))
+
 ### 1.0.1-daily.1 (2022-04-12)
 
 

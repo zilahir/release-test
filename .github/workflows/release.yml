@@ -26,4 +26,4 @@ jobs:
         uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
       - run: HUSKY=0 npm i
-      - run: npx semantic-release
+      - run: CI=true npx semantic-release

@@ -5,6 +5,8 @@ on:
     branches:
       - release
       - daily
+env:
+  CI: true
 
 jobs:
   npm:

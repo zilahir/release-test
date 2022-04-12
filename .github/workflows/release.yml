@@ -5,6 +5,9 @@ on:
     branches:
       - release
       - daily
+env:
+  CI: true
+  HUSKY: 0
 
 jobs:
   npm:
@@ -14,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - uses: bahmutov/npm-install@v1
-      - run: npm i
+      - run: HUSKY=0 npm i
   release:
      name: Semantic Release
      runs-on: "ubuntu-latest"
@@ -22,5 +25,6 @@ jobs:
       - name: Make release
         uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
-      - run: npm i
-      - run: npx semantic-release
+      - run: rm -rf .husky/prepare-commit-msg
+      - run: HUSKY=0 npm i
+      - run: CI=true npx semantic-release

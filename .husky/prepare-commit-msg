@@ -1,3 +1,5 @@
 #!/bin/sh
 
-exec < /dev/tty && npx --no-install cz --hook || true
+if [ -d "/dev" ]; then
+  exec < /dev/tty && npx --no-install cz --hook || true
+fi
